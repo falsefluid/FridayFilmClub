@@ -33,7 +33,7 @@
             <div>Average Rating</div>
             <div class="average-rating">
                 <img src="/images/star-full.png" alt="Star" class="star-icon" />
-                <span style="font-size:20px;"><strong>@(Model.Movie.AverageRating > 0 ? Model.Movie.AverageRating.ToString("F1") : "N/A")</strong>/10</span>
+                <span style="font-size:20px;"><strong>@(Model.Movie.AverageRating > 0 ? Model.Movie.AverageRating.ToString("0.#") : "N/A")</strong>/10</span>
             </div>
             <p style="color:gray;">(@Model.NumberOfReviews reviews)</p>
         </div>

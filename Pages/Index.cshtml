@@ -44,7 +44,7 @@
                 <div class="movie-info">
                     <div class="average-rating" style="color:white;">
                         <img src="/images/star-full.png" alt="Star" class="star-icon" />
-                        @(movie.AverageRating != null ? movie.AverageRating.ToString("0.#") : "N/A")/10 <!-- Rating number -->
+                        @(movie.AverageRating != null ? movie.AverageRating.ToString("0.#"): "N/A")/10 <!-- Rating number -->
                     </div>
                     <h2 class="movie-title">@Html.DisplayFor(modelItem => movie.MovieTitle)</h2>
                     <div class="view-button-container"> 

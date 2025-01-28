@@ -47,7 +47,9 @@ public class FindModel : PageModel
                     .ThenInclude(cim => cim.Movie)
                 .Include(c => c.CelebritiesInMovies)
                     .ThenInclude(cim => cim.Credit)
-                .Where(c => EF.Functions.Like(c.Forename, $"{query}%") || EF.Functions.Like(c.Surname, $"{query}%") || EF.Functions.Like(c.Forename, $"%{query}%") || EF.Functions.Like(c.Surname, $"%{query}%"))
+                .Where(c => EF.Functions.Like(c.Forename, $"{query}%") || EF.Functions.Like(c.Surname, $"{query}%") || 
+                            EF.Functions.Like(c.Forename, $"%{query}%") || EF.Functions.Like(c.Surname, $"%{query}%") ||
+                            EF.Functions.Like(c.Forename + " " + c.Surname, $"{query}%") || EF.Functions.Like(c.Forename + " " + c.Surname, $"%{query}%"))
                 .OrderByDescending(c => EF.Functions.Like(c.Forename, $"{query}%") || EF.Functions.Like(c.Surname, $"{query}%"))
                 .ThenBy(c => c.Forename)
                 .ThenBy(c => c.Surname)
