@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FridayFilmClub")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24a3c1e8202f3dc35e9943d89f936812939afb47")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a37e2dc085e63e7a414844fbb8568617de95af48")]
 [assembly: System.Reflection.AssemblyProductAttribute("FridayFilmClub")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FridayFilmClub")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

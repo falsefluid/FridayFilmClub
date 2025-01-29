@@ -1,5 +1,40 @@
-@page
-@model MovieModel
+@page "{id:int}"
+@model NameModel
+@using System.Web
 @{
-    ViewData["Title"] = "name";
+    ViewData["Title"] = Model.Celebrity.Forename + " " + Model.Celebrity.Surname;
+    var isLoggedIn = User.Identity.IsAuthenticated;
+}
+
+<div class="celebrity-header" style="margin-top: 20px;">
+    <div class="celebrity-header-left">
+        <h2>@Model.Celebrity.Forename @Model.Celebrity.Surname</h2>
+        <div class="celebrity-header-left-info">
+            <p>
+                @string.Join(" • ", Model.LatestRoles.Take(3).Select(role => role.Credit.Role))
+            </p>
+        </div>
+    </div>
+    <div class="celebrity-header-right">
+        <div class="average-rating-container">
+            <div>Average Rating</div>
+            <div class="average-rating">
+                <img src="/images/star-full.png" alt="Star" class="star-icon" />
+                <span style="font-size:20px;"><strong>@(Model.AverageRating > 0 ? ((double)Model.AverageRating).ToString("0.#") : "N/A")</strong>/10</span>
+            </div>
+            <p style="color:gray;">(@Model.NumberOfMovies movies)</p>
+        </div>
+    </div>
+</div>
+
+<div class="celebrity-details-container">
+    <div class="celebrity-details-info">
+        
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Add any necessary JavaScript here
+    </script>
 }

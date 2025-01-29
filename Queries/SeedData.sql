@@ -31,7 +31,9 @@ VALUES
 ('Avengers: Endgame', 2019, 'PG-13', 181, 'After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos'' actions and restore balance to the universe.', 'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg', '2019/04/26', 'https://www.youtube.com/watch?v=wuOvmyuYFMo&ab_channel=MarvelUK'),
 ('Deadpool & Wolverine', 2024, 'R', 128, 'Deadpool is offered a place in the Marvel Cinematic Universe by the Time Variance Authority, but instead recruits a variant of Wolverine to save his universe from extinction.', 'https://m.media-amazon.com/images/M/MV5BZTk5ODY0MmQtMzA3Ni00NGY1LThiYzItZThiNjFiNDM4MTM3XkEyXkFqcGc@._V1_SX300.jpg', '2024/07/26', 'https://www.youtube.com/watch?v=73_1biulkYk&ab_channel=MarvelEntertainment'),
 ('Spider-Man: Across the Spider-Verse', 2023, 'PG', 140, 'Miles Morales catapults across the multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero.', 'https://m.media-amazon.com/images/M/MV5BNThiZjA3MjItZGY5Ni00ZmJhLWEwN2EtOTBlYTA4Y2E0M2ZmXkEyXkFqcGc@._V1_SX300.jpg', '2023/06/02', 'https://www.youtube.com/watch?v=cqGjhVJWtEg&ab_channel=SonyPicturesEntertainment'),
-('Dragon Ball Super: Broly', 2018, 'PG', 100, 'Goku and Vegeta encounter Broly, a Saiyan warrior unlike any fighter they''ve faced before.', 'https://m.media-amazon.com/images/M/MV5BMTA5MTc1M2EtZWQ2Ni00ZmU2LTg3MzQtOTliMjE4OGM0ZWFiXkEyXkFqcGc@._V1_SX300.jpg', '2019/01/16', 'https://www.youtube.com/watch?v=FHgm89hKpXU&ab_channel=IGN');
+('Dragon Ball Super: Broly', 2018, 'PG', 100, 'Goku and Vegeta encounter Broly, a Saiyan warrior unlike any fighter they''ve faced before.', 'https://m.media-amazon.com/images/M/MV5BMTA5MTc1M2EtZWQ2Ni00ZmU2LTg3MzQtOTliMjE4OGM0ZWFiXkEyXkFqcGc@._V1_SX300.jpg', '2019/01/16', 'https://www.youtube.com/watch?v=FHgm89hKpXU&ab_channel=IGN'),
+('The Truman Show', 1998, 'PG', '103', 'An insurance salesman begins to suspect that his whole life is actually some sort of reality TV show.', 'https://m.media-amazon.com/images/M/MV5BNzA3ZjZlNzYtMTdjMy00NjMzLTk5ZGYtMTkyYzNiOGM1YmM3XkEyXkFqcGc@._V1_SX300.jpg', '1998/06/05', 'https://www.youtube.com/watch?v=dlnmQbPGuls'),
+('John Wick: Chapter 4', 2023, 'R', 169,'John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.', 'https://m.media-amazon.com/images/M/MV5BY2Q2ZmI5ZjUtNWVhMC00YzJkLTlmYjMtY2RmZDhkNzEzYjZhXkEyXkFqcGc@._V1_SX300.jpg', '2023/03/24', 'https://www.youtube.com/watch?v=qEVUtrk8_B4');
 
 INSERT INTO MovieGenres (MovieID, GenreID) 
 VALUES
@@ -69,7 +71,12 @@ VALUES
 (11, 3), -- Spider-Man: Across the Spider-Verse - Adventure
 (12, 2), -- Dragon Ball Super: Broly - Animation
 (12, 1), -- Dragon Ball Super: Broly - Action
-(12, 3); -- Dragon Ball Super: Broly - Adventure
+(12, 3), -- Dragon Ball Super: Broly - Adventure
+(13, 4), -- The Truman Show - Comedy
+(13, 6), -- The Truman Show - Drama
+(14, 1), -- John Wick: Chapter 4 - Action
+(14, 5), -- John Wick: Chapter 4 - Crime
+(14, 12); -- John Wick: Chapter 4 - Thriller
 
 INSERT INTO Celebrities(Forename, Surname, Bio, Birthday, Birthplace, Picture) 
 VALUES
@@ -103,3 +110,13 @@ VALUES
 INSERT INTO CelebritiesInMovies(MovieID, CelebrityID, CreditID)
 VALUES
 (6, 7, 1);
+
+-- The Truman Show / Characters
+INSERT INTO CelebritiesInMovies(MovieID, CelebrityID, CreditID, Character)
+VALUES
+(13, 1, 2, 'Truman Burbank')
+
+-- John Wick / Characters
+INSERT INTO CelebritiesInMovies(MovieID, CelebrityID, CreditID, Character)
+VALUES
+(14, 3, 2, 'John Wick');

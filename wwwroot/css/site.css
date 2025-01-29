@@ -372,84 +372,7 @@ body {
   flex-direction: column;
 }
 
-.scroll-button {
-  background-color: transparent;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 0 10px;
-  color: #007bff;
-}
-
-.scroll-button:hover {
-  color: #0056b3;
-}
-
-.scroll-button.left {
-  margin-right: 10px;
-}
-
-.scroll-button.right {
-  margin-left: 10px;
-}
-
-/* Review */
-
-.review-container {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.rating-container {
-  display: flex;
-  justify-content: center;
-}
-
-.rating { 
-  border: none;
-  float: left;
-}
-
-.rating > input { display: none; } 
-.rating > label:before { 
-  margin: 10px;
-  font-size: 2em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
-}
-
-.rating > .half:before { 
-  content: "\f089";
-  position: absolute;
-}
-
-.rating > label { 
-  color: #ddd; 
- float: right; 
-}
-
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
-
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
-
-.rating-title {
-  margin-top: 2px;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: gray;
-  text-align: center;
-}
-
-/* Movie Header */
+/* Movie Header*/
 
 .movie-header {
   display: flex;
@@ -547,6 +470,105 @@ body {
   width: 20px;
   height: 20px;
   margin-right: 10px;
+}
+
+/* name.cshtml */
+/* Celebrity Details */
+.celebrity-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.celebrity-header-left {
+  flex: 1;
+}
+
+.celebrity-header-left-info {
+  font-size: 18px;
+  color: gray;
+}
+
+.celebrity-header-left h2 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.celebrity-header-left p {
+  margin: 5px 0 0;
+  font-size: 1em;
+  color: #666;
+}
+
+.celebrity-header-right {
+  text-align: right;
+  font-size: 18px;
+  color:gray;
+}
+
+.celebrity-header-right p {
+  margin: 0;
+  font-size: 1em;
+  color: #333;
+  text-align: center;
+}
+
+/* Review */
+
+.review-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rating-container {
+  display: flex;
+  justify-content: center;
+}
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 10px;
+  font-size: 2em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+.rating-title {
+  margin-top: 2px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: gray;
+  text-align: center;
 }
 
 /* User Reviews */
