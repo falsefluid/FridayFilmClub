@@ -3,38 +3,47 @@
 @using System.Web
 @{
     ViewData["Title"] = Model.Celebrity.Forename + " " + Model.Celebrity.Surname;
-    var isLoggedIn = User.Identity.IsAuthenticated;
 }
 
-<div class="celebrity-header" style="margin-top: 20px;">
-    <div class="celebrity-header-left">
-        <h2>@Model.Celebrity.Forename @Model.Celebrity.Surname</h2>
-        <div class="celebrity-header-left-info">
-            <p>
-                @string.Join(" • ", Model.LatestRoles.Take(3).Select(role => role.Credit.Role))
-            </p>
-        </div>
-    </div>
-    <div class="celebrity-header-right">
-        <div class="average-rating-container">
-            <div>Average Rating</div>
-            <div class="average-rating">
-                <img src="/images/star-full.png" alt="Star" class="star-icon" />
-                <span style="font-size:20px;"><strong>@(Model.AverageRating > 0 ? ((double)Model.AverageRating).ToString("0.#") : "N/A")</strong>/10</span>
-            </div>
-            <p style="color:gray;">(@Model.NumberOfMovies movies)</p>
-        </div>
-    </div>
-</div>
+<div class="celebrity-header" style="margin-top: 20px;"></div>
 
 <div class="celebrity-details-container">
-    <div class="celebrity-details-info">
-        
+    <div class="celebrity-details-poster">
+        <img src="@Model.Celebrity.Picture" alt="Celebrity Picture" />
+    </div>
+    <div class="celebrity-details-info" style="margin-left: 20px;">
+        <h2>@Model.Celebrity.Forename @Model.Celebrity.Surname</h2>
+        <p class="celebrity-detail-item"><strong>Highest Rated:</strong> @Model.HighestRated?.Movie.AverageRating/10 <img src="/images/star-full.png" alt="Star" style="width: 15px; height: 15px;" /> <a href="/movie/@Model.HighestRated?.Movie.MovieID">@Model.HighestRated?.Movie.MovieTitle (@Model.HighestRated?.Movie.Year)</a></p>
+        <p class="celebrity-detail-item"><strong>Lowest Rated:</strong> @Model.LowestRated?.Movie.AverageRating/10 <img src="/images/star-full.png" alt="Star" style="width: 15px; height: 15px;" /> <a href="/movie/@Model.LowestRated?.Movie.MovieID">@Model.LowestRated?.Movie.MovieTitle (@Model.LowestRated?.Movie.Year)</a></p>
+        <p class="celebrity-detail-item"><strong>Birthday:</strong> @Model.Celebrity.Birthday</p>
+        <p class="celebrity-detail-item"><strong>Birthplace:</strong> @Model.Celebrity.Birthplace</p>
+        <p>@Model.Celebrity.Bio</p>
     </div>
 </div>
 
-@section Scripts {
-    <script>
-        // Add any necessary JavaScript here
-    </script>
-}
+<div class="filmography-container">
+    <h3>Filmography</h3>
+    <div class="filmography-wrapper">
+        <ul id="filmography-list" class="filmography-list">
+            @foreach (var cim in Model.Filmography)
+            {
+                <li class="filmography-item">
+                    <a href="/movie/@cim.Movie.MovieID">
+                        <img src="@cim.Movie.Poster" alt="@cim.Movie.MovieTitle" class="filmography-picture" />
+                        <div class="filmography-details">
+                            <p class="filmography-title">@cim.Movie.MovieTitle</p>
+                            @if (!string.IsNullOrEmpty(cim.Character))
+                            {
+                                <p class="filmography-role">@cim.Credit.Role as @cim.Character</p>
+                            }
+                            else
+                            {
+                                <p class="filmography-role">@cim.Credit.Role</p>
+                            }
+                        </div>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

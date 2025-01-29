@@ -94,7 +94,7 @@
                 <li class="find-user-item">
                     <img src="@user.Picture" alt="User Picture" class="find-user-picture"/>
                     <div class="find-user-details">
-                        <a asp-page="/name" asp-route-id="@user.UserID" class="find-user-name">@user.Username</a>
+                        <a asp-page="/user" asp-route-id="@user.UserID" class="find-user-name">@user.Username</a>
                         <p class="find-user-bio">
                         Bio : 
                         @if (!string.IsNullOrWhiteSpace(user.Bio))

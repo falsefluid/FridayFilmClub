@@ -13,12 +13,17 @@ public class NameModel : PageModel
     {
         _context = context;
         _logger = logger;
+        
     }
 
     public Celebrities Celebrity { get; set; }
     public List<CelebritiesInMovies> LatestRoles { get; set; }
+    public CelebritiesInMovies HighestRated { get; set; }
+    public CelebritiesInMovies LowestRated { get; set; }
+    public List<CelebritiesInMovies> Filmography { get; set; }
     public double? AverageRating { get; set; }
     public int NumberOfMovies { get; set; }
+    
 
     public async Task<IActionResult> OnGetAsync(int id)
     {
@@ -39,12 +44,25 @@ public class NameModel : PageModel
             .OrderByDescending(cim => cim.Movie.ReleaseDate)
             .Take(3)
             .ToList();
+        
+        // Calculate highest and lowest rated movies
+        HighestRated = Celebrity.CelebritiesInMovies
+            .OrderByDescending(cim => cim.Movie.AverageRating)
+            .FirstOrDefault();
+
+        LowestRated = Celebrity.CelebritiesInMovies
+            .OrderBy(cim => cim.Movie.AverageRating)
+            .FirstOrDefault();
 
         // Calculate average rating
         var movieIds = Celebrity.CelebritiesInMovies.Select(cim => cim.MovieID).Distinct();
         AverageRating = await _context.Reviews
             .Where(r => movieIds.Contains(r.MovieID))
             .AverageAsync(r => (double?)r.Rating);
+
+        Filmography = Celebrity.CelebritiesInMovies
+            .OrderByDescending(cim => cim.Movie.ReleaseDate)
+            .ToList();
 
         // Calculate number of movies
         NumberOfMovies = movieIds.Count();

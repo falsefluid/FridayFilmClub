@@ -39,6 +39,7 @@
         </div>
     </div>
 </div>
+
 <div class="movie-details-container">
     <div class="movie-details-poster">
         <img src="@Model.Movie.Poster" alt="Movie Poster" />
@@ -59,20 +60,22 @@
             @foreach (var cim in Model.Movie.CelebritiesInMovies)
             {
                 <li class="cast-crew-item">
+                    <a href="/name/@cim.Celebrity.CelebrityID">
                     <img src="@cim.Celebrity.Picture" alt="@cim.Celebrity.Forename @cim.Celebrity.Surname" class="cast-crew-picture" />
-                    <div class="cast-crew-details">
-                        <strong>@cim.Celebrity.Forename @cim.Celebrity.Surname</strong>
-                        <span>
-                            @if (cim.Credit.Role == "Director")
-                            {
-                                <span>Director</span>
-                            }
-                            else
-                            {
-                                <span>as @cim.Character</span>
-                            }
-                        </span>
-                    </div>
+                        <div class="cast-crew-details">
+                            <strong>@cim.Celebrity.Forename @cim.Celebrity.Surname</strong>
+                            <span>
+                                @if (!string.IsNullOrEmpty(cim.Character))
+                                {
+                                    <span>as @cim.Character</span>
+                                }
+                                else
+                                {
+                                    <span>@cim.Credit.Role</span>
+                                }
+                            </span>
+                        </div>
+                    </a>
                 </li>
             }
         </ul>

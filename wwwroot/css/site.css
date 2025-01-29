@@ -474,7 +474,7 @@ body {
 
 /* name.cshtml */
 /* Celebrity Details */
-.celebrity-header{
+.celebrity-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -505,7 +505,7 @@ body {
 .celebrity-header-right {
   text-align: right;
   font-size: 18px;
-  color:gray;
+  color: gray;
 }
 
 .celebrity-header-right p {
@@ -513,6 +513,101 @@ body {
   font-size: 1em;
   color: #333;
   text-align: center;
+}
+
+.celebrity-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  max-width: 1000px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.celebrity-details-poster {
+  flex: 0.9;
+  margin-left: 20px;
+}
+
+.celebrity-details-poster img {
+  width: 218px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.celebrity-details-info {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.celebrity-detail-item {
+  margin-bottom: 1px;
+}
+
+.filmography-container {
+  position: relative;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: 20px auto 0 auto;
+}
+
+.filmography-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.filmography-list {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.filmography-item {
+  flex: 0 0 auto;
+  margin-right: 10px;
+  position: relative;
+}
+
+.filmography-picture {
+  width: 150px;
+  height: 228px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.filmography-details {
+  position: absolute;
+  font-size: 12px;
+  bottom: 5px;
+  left: 5px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filmography-title {
+  font-weight: bold;
+  margin-bottom:2px
+}
+
+.filmography-role {
+  font-style: italic;
+  margin-bottom:2px
 }
 
 /* Review */
