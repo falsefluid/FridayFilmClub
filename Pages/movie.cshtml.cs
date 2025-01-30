@@ -123,4 +123,35 @@ public class MovieModel : PageModel
 
         return RedirectToPage(new { id });
     }
+
+    public async Task<IActionResult> OnPostDeleteReviewAsync(int reviewId, int movieId)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var isAdmin = User.IsInRole("Admin");
+
+        if (userId == null || !isAdmin)
+        {
+            return Unauthorized();
+        }
+
+        var review = await _context.Reviews.FindAsync(reviewId);
+        if (review == null)
+        {
+            return NotFound();
+        }
+
+        _context.Reviews.Remove(review);
+        await _context.SaveChangesAsync();
+
+        // Update the movie's average rating and number of reviews
+        var movie = await _context.Movies.FindAsync(movieId);
+        if (movie != null)
+        {
+            movie.NumberOfReviews = await _context.Reviews.CountAsync(r => r.MovieID == movieId);
+            movie.AverageRating = (float)await _context.Reviews.Where(r => r.MovieID == movieId).AverageAsync(r => r.Rating);
+            await _context.SaveChangesAsync();
+        }
+
+        return new JsonResult(new { success = true });
+    }
 }

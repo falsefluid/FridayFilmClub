@@ -50,9 +50,15 @@ public class LoginModel : PageModel
             // Create a list of claims including NameIdentifier and Name
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),  // Add the NameIdentifier claim
-                new Claim(ClaimTypes.Name, Username ?? string.Empty)       // Name claim
+                new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
+                new Claim(ClaimTypes.Name, Username ?? string.Empty)
             };
+
+            // Add the Admin role claim (change to whatever username you want to be an admin)
+            if (Username == "SleepyPumpk1n")
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+            }
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -71,7 +77,6 @@ public class LoginModel : PageModel
         ModelState.AddModelError(string.Empty, "Invalid login attempt.");
         return Page();
     }
-
     private bool ValidateUser(string? username, string? password)
     {
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))

@@ -20,6 +20,7 @@ public class FindModel : PageModel
     public List<Movies> Movies { get; set; }
     public List<Celebrities> Celebrities { get; set; }
     public List<Users> Users { get; set; }
+    public Dictionary<int, Movies> LatestReviewedMovies { get; set; } = new Dictionary<int, Movies>();
 
     public async Task OnGetAsync(string query)
     {
@@ -61,6 +62,26 @@ public class FindModel : PageModel
                 .OrderByDescending(u => EF.Functions.Like(u.Username, $"{query}%"))
                 .ThenBy(u => u.Username)
                 .ToListAsync();
+
+            // Fetch the latest reviewed movie for each user
+            foreach (var user in Users)
+            {
+                var latestReview = await _context.Reviews
+                    .Where(r => r.UserID == user.UserID)
+                    .OrderByDescending(r => r.Date)
+                    .FirstOrDefaultAsync();
+
+                if (latestReview != null)
+                {
+                    var latestMovie = await _context.Movies
+                        .FirstOrDefaultAsync(m => m.MovieID == latestReview.MovieID);
+
+                    if (latestMovie != null)
+                    {
+                        LatestReviewedMovies[user.UserID] = latestMovie;
+                    }
+                }
+            }
         }
     }
 }

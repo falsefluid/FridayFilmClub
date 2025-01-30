@@ -95,17 +95,15 @@
                     <img src="@user.Picture" alt="User Picture" class="find-user-picture"/>
                     <div class="find-user-details">
                         <a asp-page="/user" asp-route-id="@user.UserID" class="find-user-name">@user.Username</a>
-                        <p class="find-user-bio">
-                        Bio : 
-                        @if (!string.IsNullOrWhiteSpace(user.Bio))
+                        <p class="find-user-bio">@user.Bio</p>
+                        @if (Model.LatestReviewedMovies.ContainsKey(user.UserID))
                         {
-                            <span>@user.Bio</span>
+                            <p class="find-user-latest-review">Latest Reviewed Movie: 
+                                <a asp-page="/movie" asp-route-id="@Model.LatestReviewedMovies[user.UserID].MovieID">
+                                    @Model.LatestReviewedMovies[user.UserID].MovieTitle
+                                </a>
+                            </p>
                         }
-                        else
-                        {
-                            <span>This user doesn't have a bio.</span>
-                        }
-                        </p>
                     </div>
                 </li>
                 @if (Model.Users.Count > 1)

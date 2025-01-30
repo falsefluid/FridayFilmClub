@@ -4702,19 +4702,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kayew Yang\\.nuget\\packages\\": {}
+    "C:\\Users\\itloan\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\test\\FridayFilmClub\\FridayFilmClub.csproj",
+      "projectUniqueName": "C:\\Users\\itloan\\git\\FridayFilmClub\\FridayFilmClub.csproj",
       "projectName": "FridayFilmClub",
-      "projectPath": "D:\\test\\FridayFilmClub\\FridayFilmClub.csproj",
-      "packagesPath": "C:\\Users\\Kayew Yang\\.nuget\\packages\\",
-      "outputPath": "D:\\test\\FridayFilmClub\\obj\\",
+      "projectPath": "C:\\Users\\itloan\\git\\FridayFilmClub\\FridayFilmClub.csproj",
+      "packagesPath": "C:\\Users\\itloan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\itloan\\git\\FridayFilmClub\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Kayew Yang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\itloan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4776,7 +4781,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
