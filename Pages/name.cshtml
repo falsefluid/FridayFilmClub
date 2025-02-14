@@ -13,8 +13,8 @@
     </div>
     <div class="celebrity-details-info" style="margin-left: 20px;">
         <h2>@Model.Celebrity.Forename @Model.Celebrity.Surname</h2>
-        <p class="celebrity-detail-item"><strong>Highest Rated:</strong> @Model.HighestRated?.Movie.AverageRating/10 <img src="/images/star-full.png" alt="Star" style="width: 15px; height: 15px;" /> <a href="/movie/@Model.HighestRated?.Movie.MovieID">@Model.HighestRated?.Movie.MovieTitle (@Model.HighestRated?.Movie.Year)</a></p>
-        <p class="celebrity-detail-item"><strong>Lowest Rated:</strong> @Model.LowestRated?.Movie.AverageRating/10 <img src="/images/star-full.png" alt="Star" style="width: 15px; height: 15px;" /> <a href="/movie/@Model.LowestRated?.Movie.MovieID">@Model.LowestRated?.Movie.MovieTitle (@Model.LowestRated?.Movie.Year)</a></p>
+        <p class="celebrity-detail-item"><strong>Highest Rated:</strong> @(Model.HighestRated?.Movie.AverageRating > 0 ? Model.HighestRated.Movie.AverageRating.ToString("0.#") : "N/A")/10 <img src="/images/star-full.png" alt="Star" style="width: 15px; height: 15px;" /> <a href="/movie/@Model.HighestRated?.Movie.MovieID">@Model.HighestRated?.Movie.MovieTitle (@Model.HighestRated?.Movie.Year)</a></p>
+        <p class="celebrity-detail-item"><strong>Lowest Rated:</strong> @(Model.LowestRated?.Movie.AverageRating > 0 ? Model.LowestRated.Movie.AverageRating.ToString("0.#") : "N/A")/10 <img src="/images/star-full.png" alt="Star" style="width: 15px; height: 15px;" /> <a href="/movie/@Model.LowestRated?.Movie.MovieID">@Model.LowestRated?.Movie.MovieTitle (@Model.LowestRated?.Movie.Year)</a></p>
         <p class="celebrity-detail-item"><strong>Birthday:</strong> @Model.Celebrity.Birthday</p>
         <p class="celebrity-detail-item"><strong>Birthplace:</strong> @Model.Celebrity.Birthplace</p>
         <p>@Model.Celebrity.Bio</p>
